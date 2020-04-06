@@ -173,6 +173,23 @@ az iot hub monitor-events --login $IOTHUB_CONN_STRING -y
 
 * If you are using [tmux](https://github.com/tmux/tmux/wiki), press `ctrl+b` `"` to create a new panel. Otherway, open a new terminal session (to keep running the event monitoring in the previous one)
 
+
+* Set the variables if needed
+
+```bash
+RESOURCE_GROUP_NAME=workshop-rg
+IOT_HUB_NAME=workshop-iothub
+EDGE_DEVICE_NAME=$USER-edge 
+
+IP=$(az vm show \
+  --show-details \
+  --resource-group $RESOURCE_GROUP_NAME \
+  --name vm$EDGE_DEVICE_NAME \
+  --query publicIps \
+  --output tsv) \
+&& echo Your Edge device has the IP $IP
+```
+
 * Create a program that emulates the sensors that provide information to the edge location device
 
 ```
@@ -201,22 +218,6 @@ done
 EOF
 
 chmod +x sensor-simulator
-```
-
-* Set the variables if needed
-
-```bash
-RESOURCE_GROUP_NAME=workshop-rg
-IOT_HUB_NAME=workshop-iothub
-EDGE_DEVICE_NAME=$USER-edge 
-
-IP=$(az vm show \
-  --show-details \
-  --resource-group $RESOURCE_GROUP_NAME \
-  --name vm$EDGE_DEVICE_NAME \
-  --query publicIps \
-  --output tsv) \
-&& echo Your Edge device has the IP $IP
 ```
 
 * Run one or more simulated sensors
