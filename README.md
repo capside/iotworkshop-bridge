@@ -212,7 +212,7 @@ exit
 
 * Check it again. Really
 
-* Take a few minutes to check the [workshop/deployment.json](workshop/deployment.json) as it contains the configuration for the *edge device*
+* Take a few minutes to check the [workshop/deployment.json](deployment.json) as it contains the configuration for the *edge device*
 
 * Now deploy the modules on the device (actually, tell the *iothub* to ask the device to update its status)
 
